@@ -95,7 +95,9 @@ export type AlertServiceType = {
   defaultTimeout: number
   showingAlerts: Alert[]
   containerElement: HTMLElement
-  renderAlertContainer(alerts: readonly Alert[]): React.ReactElement
+  // added for backward compatibility
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  renderAlertContainer(alerts: readonly Alert[]): React.ReactElement<any>
   renderAlerts(): void
   findSameAlert(message: string, type: string): Alert
   startAlertClosing(alert: Alert): void
