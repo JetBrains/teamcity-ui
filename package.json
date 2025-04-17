@@ -2,6 +2,8 @@
   "name": "@jetbrains/teamcity-ui",
   "version": "1.0.0-alpha.4",
   "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     "./babel.config": "./babel.config.js",
     "./babel.config.js": "./babel.config.js",
