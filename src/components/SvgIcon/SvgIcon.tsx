@@ -2,7 +2,7 @@ import '@jetbrains/ring-ui-built/components/style.css'
 import memoize from '@jetbrains/ring-ui-built/components/global/memoize'
 import RingIcon from '@jetbrains/ring-ui-built/components/icon/icon'
 import type {IconType, IconAttrs} from '@jetbrains/ring-ui-built/components/icon/icon'
-import IconSVG from '@jetbrains/ring-ui-built/components/icon/icon__svg'
+import IconSVG from '@jetbrains/ring-ui-built/components/icon/icon__svg.js'
 import {pascalCase} from 'change-case'
 import classNames from 'classnames'
 import type {SVGAttributes} from 'react'
@@ -23,7 +23,7 @@ function getSize(icon: string) {
 
 type GetIcon = (icon: string) => Promise<{default: IconType}>
 const getRingIcon: GetIcon = icon =>
-  import(`@jetbrains/icons/${icon}`).then(exportsObject => ({
+  import(`@jetbrains/icons/${icon}.js`).then(exportsObject => ({
     default: function LazySvg(props: SVGAttributes<SVGSVGElement>) {
       return <IconSVG {...props} src={exportsObject.default} />
     },
