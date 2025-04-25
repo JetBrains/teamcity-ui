@@ -5,6 +5,8 @@ import type {IconType} from '@jetbrains/ring-ui-built/components/icon/icon'
 import classNames from 'classnames'
 import * as React from 'react'
 
+import {ControlsHeight} from '@jetbrains/ring-ui-built/components/global/controls-height'
+
 import {getDisplayName} from '../../utils/getDisplayName'
 import {getGlyph} from '../SvgIcon/SvgIcon'
 import svgIconStyles from '../SvgIcon/SvgIcon.module.css'
@@ -44,6 +46,7 @@ export default class IconButton extends React.PureComponent<Props> {
     }
     return (
       <Button
+        height={ControlsHeight.S}
         {...restProps}
         inline={!withBorder}
         title={title ?? (typeof children === 'string' ? children : null) ?? getDisplayName(icon)}
