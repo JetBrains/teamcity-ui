@@ -1,4 +1,4 @@
-import HTTPError from './errors/HTTPError'
+import {HTTPError} from './errors/HTTPError'
 
 export async function processErrors(response: Response) {
   if (!response.ok) {
@@ -7,7 +7,7 @@ export async function processErrors(response: Response) {
   }
 }
 
-export default async function processResponse<T>(response: Response): Promise<T> {
+export async function processResponse<T>(response: Response): Promise<T> {
   await processErrors(response)
 
   return response.json()

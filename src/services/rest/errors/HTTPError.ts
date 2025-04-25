@@ -10,7 +10,7 @@ export enum HTTPCodesEnum {
   BAD_GATEWAY = 502,
 }
 
-export default class HTTPError extends BasicError {
+export class HTTPError extends BasicError {
   statusCode: HTTPCodesEnum | number | undefined
   url: string | null | undefined
   response: Response | undefined

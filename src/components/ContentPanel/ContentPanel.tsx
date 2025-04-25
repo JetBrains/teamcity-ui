@@ -1,8 +1,9 @@
 import '@jetbrains/ring-ui-built/components/style.css'
-import {H2} from '@jetbrains/ring-ui-built/components/heading/heading'
-import LoaderInline from '@jetbrains/ring-ui-built/components/loader-inline/loader-inline'
+import {H2} from '@jetbrains/ring-ui-built/components/heading/heading.js'
+import LoaderInline from '@jetbrains/ring-ui-built/components/loader-inline/loader-inline.js'
 import classNames from 'classnames'
 import * as React from 'react'
+import type {HTMLAttributes} from 'react'
 import {Suspense, useContext, useLayoutEffect} from 'react'
 
 import SvgIcon from '../SvgIcon/SvgIcon'
@@ -10,6 +11,18 @@ import SvgIcon from '../SvgIcon/SvgIcon'
 import {ContentPanelContext} from './ContentPanel.context'
 
 import styles from './ContentPanel.module.css'
+
+export function HTMLHeading({
+  children,
+  className,
+  ...restProps
+}: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <H2 className={classNames(styles.htmlHeading, className)} {...restProps}>
+      {children}
+    </H2>
+  )
+}
 
 export type ContentPanelProps = {
   readonly className?: string
@@ -28,6 +41,7 @@ export type ContentPanelProps = {
   readonly expandable?: boolean
   readonly withBorder?: boolean
   readonly expandedByDefault?: boolean
+  readonly errorHeading?: boolean
 }
 
 function ContentPanel({
@@ -43,6 +57,7 @@ function ContentPanel({
   expandable = true,
   withBorder = true,
   expandedByDefault = true,
+  errorHeading,
   ...restProps
 }: ContentPanelProps) {
   const {expanded, setExpanded, setParams} = useContext(ContentPanelContext)
@@ -51,7 +66,7 @@ function ContentPanel({
   }, [expandedByDefault, panelType, setParams])
   const HeadingHtml = React.useMemo(
     () => (
-      <H2 className={styles.htmlHeading}>
+      <HTMLHeading>
         {expandable === true && (
           <SvgIcon
             className={styles.chevronIcon}
@@ -61,7 +76,9 @@ function ContentPanel({
           />
         )}
         <span
-          className={classNames(headingClassName, styles.heading)}
+          className={classNames(headingClassName, styles.heading, {
+            [styles.errorHeading]: errorHeading,
+          })}
           data-test-panel-heading={panelType}
         >
           {heading}
@@ -74,12 +91,13 @@ function ContentPanel({
             {subheading}
           </span>
         )}
-      </H2>
+      </HTMLHeading>
     ),
     [
       expandable,
       expanded,
       headingClassName,
+      errorHeading,
       panelType,
       heading,
       subheading,

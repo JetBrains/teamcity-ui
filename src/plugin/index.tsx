@@ -229,4 +229,6 @@ class Plugin extends PluginCallbacks implements PluginInterface {
   }
 }
 
+export {PlaceId}
+export * from './utils'
 export default Plugin

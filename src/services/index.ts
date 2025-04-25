@@ -1,5 +1,5 @@
 import '@jetbrains/ring-ui-built/components/style.css'
-import AlertService from '@jetbrains/ring-ui-built/components/alert-service/alert-service'
+import AlertService from '@jetbrains/ring-ui-built/components/alert-service/alert-service.js'
 import deprecate from 'util-deprecate'
 
 import type {HintsServiceType} from '../types/legacy'
@@ -23,6 +23,11 @@ const HintsService = {
 }
 const REST = {requestJSON, requestText}
 export type RestServiceType = typeof REST
+
+export * from './rest/request'
+export * from './rest/processResponse'
+export * from './rest/errors/HTTPError'
+
 export {
   REST,
 

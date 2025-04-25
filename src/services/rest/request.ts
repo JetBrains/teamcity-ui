@@ -5,7 +5,7 @@ import {objectEntries} from '../../utils/object'
 
 import {HTTPCodesEnum} from './errors/HTTPError'
 import NoConnectionError from './errors/NoConnectionError'
-import processResponse, {processTextResponse} from './processResponse'
+import {processResponse, processTextResponse} from './processResponse'
 
 const LIMIT_FOR_NO_CONNECTION_ERROR = 2
 const defaultHeaders: Record<string, string> = {
@@ -120,7 +120,7 @@ function checkCSRFExists() {
   })
 }
 
-export default async function request(
+export async function request(
   serverUrl?: string | null,
   endpoint?: string | null,
   options?: RestRequestOptions | null,

@@ -1,5 +1,5 @@
 import '@jetbrains/ring-ui-built/components/style.css'
-import Button from '@jetbrains/ring-ui-built/components/button/button'
+import Button from '@jetbrains/ring-ui-built/components/button/button.js'
 import type {ButtonAttrs} from '@jetbrains/ring-ui-built/components/button/button'
 import type {IconType} from '@jetbrains/ring-ui-built/components/icon/icon'
 import classNames from 'classnames'

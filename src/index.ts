@@ -27,7 +27,10 @@ export type TeamCityAPIType = typeof TeamCityUI
 
 export type * from './components/ContentPanel/ContentPanel.context'
 export type * from './components/ContentPanel/ContentPanel'
+export type * from './components/Markdown/Markdown'
 export type * from './plugin/types'
 export type * from './services'
 export type * from './services/rest/request'
 export type * from './types/legacy'
+
+export * from './types/BS_types'

@@ -1,6 +1,6 @@
 import '@jetbrains/ring-ui-built/components/style.css'
-import memoize from '@jetbrains/ring-ui-built/components/global/memoize'
-import RingIcon from '@jetbrains/ring-ui-built/components/icon/icon'
+import memoize from '@jetbrains/ring-ui-built/components/global/memoize.js'
+import RingIcon from '@jetbrains/ring-ui-built/components/icon/icon.js'
 import type {IconType, IconAttrs} from '@jetbrains/ring-ui-built/components/icon/icon'
 import IconSVG from '@jetbrains/ring-ui-built/components/icon/icon__svg.js'
 import {pascalCase} from 'change-case'
