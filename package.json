@@ -2,7 +2,7 @@
   "name": "@jetbrains/teamcity-ui",
   "version": "1.0.0-alpha.5",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     "./babel.config": "./babel.config.js",
@@ -12,35 +12,29 @@
     "./plugin.tsconfig.json": "./plugin.tsconfig.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.mjs"
     },
     "./index.css": "./dist/index.css",
     "./plugin/*": {
       "types": "./dist/plugin/*.d.ts",
-      "import": "./dist/plugin/*.mjs",
-      "require": "./dist/plugin/*.js"
+      "default": "./dist/plugin/*.mjs"
     },
     "./*": {
       "types": "./dist/*/index.d.ts",
-      "import": "./dist/*/index.mjs",
-      "require": "./dist/*/index.js"
+      "default": "./dist/*/index.mjs"
     },
     "./dist": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.mjs"
     },
     "./dist/index.css": "./dist/index.css",
     "./dist/plugin/*": {
       "types": "./dist/plugin/*.d.ts",
-      "import": "./dist/plugin/*.mjs",
-      "require": "./dist/plugin/*.js"
+      "default": "./dist/plugin/*.mjs"
     },
     "./dist/*": {
       "types": "./dist/*/index.d.ts",
-      "import": "./dist/*/index.mjs",
-      "require": "./dist/*/index.js"
+      "default": "./dist/*/index.mjs"
     }
   },
   "repository": {

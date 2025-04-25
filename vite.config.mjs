@@ -28,6 +28,7 @@ export default defineConfig(({command}) => ({
   build: {
     target: browserslistToEsbuild(),
     lib: {
+      formats: ['es'],
       entry: {
         index: 'src/index.ts',
         'components/index': 'src/components/index.ts',
