@@ -7,6 +7,8 @@ import classNames from 'classnames'
 import type {AnchorHTMLAttributes} from 'react'
 import {useMemo} from 'react'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 
 import {baseUri} from '../../types/BS_types'
 import {isRelativeRootUrl} from '../../utils/url'
@@ -18,12 +20,15 @@ import styles from './Markdown.module.css'
 
 interface ComponentsProps {
   linkOpenPolicy?: LinkOpenPolicy
+  parseHTML?: boolean
 }
 
 export type MarkdownProps = RingMarkdownProps &
   ComponentsProps & {
     children: string
   }
+
+const rehypePlugins = [rehypeRaw, rehypeSanitize]
 
 const getCustomMarkdownComponents = ({
   linkOpenPolicy = LinkOpenPolicy.EXTERNAL_IN_NEW_TAB,
@@ -43,13 +48,16 @@ export default function Markdown({
   children,
   linkOpenPolicy,
   className,
+  parseHTML,
   ...restProps
 }: MarkdownProps) {
   const components = useMemo(() => getCustomMarkdownComponents({linkOpenPolicy}), [linkOpenPolicy])
 
   return (
     <RingMarkdown className={classNames(styles.markdown, className)} {...restProps}>
-      <ReactMarkdown components={components}>{normalizeIndent(children)}</ReactMarkdown>
+      <ReactMarkdown components={components} rehypePlugins={parseHTML ? rehypePlugins : undefined}>
+        {normalizeIndent(children)}
+      </ReactMarkdown>
     </RingMarkdown>
   )
 }
