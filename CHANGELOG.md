@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.9](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2025-07-12)
+
 ## [1.0.0-alpha.8](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2025-07-09)
 
 ## [1.0.0-alpha.7](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2025-04-25)
