@@ -99,6 +99,11 @@ module.exports = function getWebpackConfig(options) {
     module: {
       rules: [
         ...ringUiConfig.config.module.rules,
+        {
+          test: /.css$/,
+          include: /node_modules\/@jetbrains\/(ring-ui-built|teamcity-ui)/,
+          use: ['style-loader', 'css-loader'],
+        },
         useTypeScript && {
           test: /\.ts(x?)$/,
           exclude: /node_modules/,
