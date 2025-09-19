@@ -57,7 +57,7 @@
   ],
   "dependencies": {
     "@jetbrains/icons": "^5.8.0",
-    "@jetbrains/ring-ui-built": "^7.0.42",
+    "@jetbrains/ring-ui-built": "^7.0.63",
     "change-case": "^5.4.4",
     "classnames": "^2.5.1",
     "react-is": "^19.1.0",
