@@ -22,6 +22,14 @@ declare global {
       ) => boolean
       refreshCSRFToken: (callback?: () => unknown, force?: boolean) => unknown
     }
+    Log?: {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      debug(arg0: any, ...args: any): unknown
+      log(arg0: unknown, ...args: any): unknown
+      warn(arg0: unknown, ...args: any): unknown
+      error(arg0: unknown, ...args: any): unknown
+      /* eslint-enable */
+    }
   }
 
   interface ReactUI {

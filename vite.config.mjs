@@ -35,6 +35,7 @@ export default defineConfig(({command}) => ({
         'plugin/index': 'src/plugin/index.tsx',
         'plugin/registry': 'src/plugin/registry.ts',
         'services/index': 'src/services/index.ts',
+        'statistics/index': 'src/statistics/index.ts',
         'tab-plugin/index': 'src/tab-plugin/index.ts',
         'utils/index': 'src/utils/index.ts',
       },

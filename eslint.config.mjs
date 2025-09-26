@@ -8,6 +8,7 @@ import {FlatCompat} from '@eslint/eslintrc'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import consts from '@jetbrains/eslint-config/consts.js'
 import js from '@eslint/js'
+import globals from 'globals'
 
 const {error, ignore} = consts
 
@@ -94,5 +95,11 @@ export default tseslint.config(
   {
     files: ['**/*.mjs'],
     rules: {'import/extensions': ignore},
+  },
+  {
+    files: ['**/*.test.ts'],
+    languageOptions: {
+      globals: globals.jest,
+    },
   },
 )

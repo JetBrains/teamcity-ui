@@ -60,6 +60,7 @@
     "@jetbrains/ring-ui-built": "^7.0.63",
     "change-case": "^5.4.4",
     "classnames": "^2.5.1",
+    "memoize-one": "^6.0.0",
     "react-is": "^19.1.0",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
@@ -87,6 +88,7 @@
     "@storybook/react": "^8.6.11",
     "@storybook/react-vite": "^8.6.11",
     "@storybook/test": "^8.6.11",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.3.4",
@@ -103,7 +105,10 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "from": "^0.1.7",
+    "globals": "^16.4.0",
     "import": "^0.0.6",
+    "jest": "^30.1.3",
+    "jest-environment-jsdom": "^30.1.2",
     "js": "^0.1.0",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
@@ -111,6 +116,7 @@
     "standard-version": "9.5.0",
     "storybook": "^8.6.11",
     "teamcity-service-messages": "^0.1.14",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1",
     "vite": "^6.2.4",
@@ -146,10 +152,11 @@
     "postbuild": "tsc",
     "commit": "git-cz",
     "version:ci": "standard-version",
-    "prerelease:ci": "npm run lint && npm run build",
+    "prerelease:ci": "npm run lint && npm run build && npm test",
     "release:ci": "git push --follow-tags origin master && npm publish",
     "storybook": "storybook dev -p 6007",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "jest"
   },
   "browserslist": [
     "extends @jetbrains/browserslist-config-teamcity"
