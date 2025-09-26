@@ -57,7 +57,7 @@
   ],
   "dependencies": {
     "@jetbrains/icons": "^5.8.0",
-    "@jetbrains/ring-ui-built": "^7.0.63",
+    "@jetbrains/ring-ui-built": "^7.0.66",
     "change-case": "^5.4.4",
     "classnames": "^2.5.1",
     "memoize-one": "^6.0.0",
