@@ -46,11 +46,6 @@
     "teamcity",
     "jetbrains"
   ],
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "license": "MIT",
   "workspaces": [
     "browserslist"
@@ -94,8 +89,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "browserslist": "^4.24.4",
     "browserslist-to-esbuild": "^2.1.1",
-    "commitizen": "4.3.1",
-    "cz-conventional-changelog": "3.3.0",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-typescript": "^4.3.2",
@@ -150,7 +143,6 @@
     "typecheck-ci": "node tsc-teamcity --noEmit",
     "build": "vite build",
     "postbuild": "tsc",
-    "commit": "git-cz",
     "version:ci": "standard-version",
     "prerelease:ci": "npm run lint && npm run build && npm test",
     "release:ci": "git push --follow-tags origin master && npm publish",
