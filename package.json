@@ -80,7 +80,7 @@
     "@storybook/addon-onboarding": "^9.1.10",
     "@storybook/blocks": "^8.6.11",
     "@storybook/react": "^8.6.11",
-    "@storybook/react-vite": "^8.6.11",
+    "@storybook/react-vite": "^9.1.10",
     "@storybook/test": "^8.6.11",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.1.1",
