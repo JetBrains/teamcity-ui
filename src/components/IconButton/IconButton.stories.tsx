@@ -1,6 +1,6 @@
 import StarFilledIcon from '@jetbrains/icons/star-filled'
 
-import type {Meta, StoryObj} from '@storybook/react'
+import type {Meta, StoryObj} from '@storybook/react-vite'
 
 import IconButton from './IconButton'
 
