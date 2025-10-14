@@ -10,13 +10,11 @@ updates:
     schedule:
       interval: daily
     groups:
-      storybook:
-        patterns:
-          - "@storybook/*"
-          - "storybook"
-        update-types:
-          - "major"
       minor-and-patch:
         update-types:
           - "patch"
           - "minor"
+      storybook:
+        patterns:
+          - "@storybook/*"
+          - "storybook"
