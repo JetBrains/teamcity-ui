@@ -14,7 +14,19 @@ function allowJetBrainsIcons(id) {
 
 export default defineConfig(({command}) => ({
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: [
+          [
+            'babel-plugin-react-compiler',
+            {
+              target: '18', // should be the minimal supported version from peerDependencies
+              panicThreshold: 'all_errors',
+            },
+          ],
+        ],
+      },
+    }),
     patchCssModules({generateSourceTypes: true}),
     command === 'serve' && [
       dynamicImport({
