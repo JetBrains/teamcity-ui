@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url'
 
 import tseslint from 'typescript-eslint'
 
+import reactHooks from 'eslint-plugin-react-hooks'
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook'
 
@@ -23,18 +24,26 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 })
 
+const jetbrainsConfigRules = compat.extends(
+  '@jetbrains',
+  '@jetbrains/eslint-config/es6',
+  '@jetbrains/eslint-config/browser',
+  '@jetbrains/eslint-config/react',
+)
+
+// Remove conflicting react-hooks plugin from JetBrains config
+jetbrainsConfigRules.forEach(config => {
+  if (config.plugins?.['react-hooks']) {
+    delete config.plugins['react-hooks']
+  }
+})
+
 export default tseslint.config(
   {
-    ignores: ['**/dist', '**/*.d.ts'],
+    ignores: ['**/dist', '**/*.d.ts', '**/storybook-static'],
   },
-  ...fixupConfigRules(
-    compat.extends(
-      '@jetbrains',
-      '@jetbrains/eslint-config/es6',
-      '@jetbrains/eslint-config/browser',
-      '@jetbrains/eslint-config/react',
-    ),
-  ),
+  ...fixupConfigRules(jetbrainsConfigRules),
+  reactHooks.configs.flat['recommended-latest'],
   tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
   {
