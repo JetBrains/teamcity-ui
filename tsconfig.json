@@ -9,6 +9,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
+    "module": "preserve",
+    "moduleResolution": "bundler"
   },
   "include": ["src", ".storybook"]
 }
