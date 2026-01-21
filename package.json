@@ -93,7 +93,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-storybook": "10.1.11",
+    "eslint-plugin-storybook": "10.2.0",
     "from": "^0.1.7",
     "globals": "^17.0.0",
     "import": "^0.0.6",
