@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.15](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2026-02-12)
+
+
+### Features
+
+* TW-98610 add Place IDs for pipeline overview [publish] ([a242d81](https://github.com/JetBrains/teamcity-ui/commit/a242d811429d9a4cc3c86af9bb82b84d399c802e))
+
 ## [1.0.0-alpha.14](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2025-11-07)
 
 ## [1.0.0-alpha.13](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2025-10-10)
