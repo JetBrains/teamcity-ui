@@ -1,7 +1,7 @@
 import {baseUri} from '../types/BS_types'
 
 import {getFusConfig} from './config'
-import {sendData} from './network'
+import {sendData, sendDataBeacon} from './network'
 import type {FusEvent, FusEventsQueue} from './statistics.types'
 import {generateBatchPayload} from './utils'
 
@@ -13,7 +13,7 @@ export function scheduleEventsSending() {
   window.setTimeout(scheduleEventsSending, getFusConfig().interval)
 }
 
-export async function sendFusData() {
+export async function sendFusData(useBeacon = false) {
   const config = getFusConfig()
 
   if (!config.initialized || !config.endpoint || eventsQueue.length === 0) {
@@ -24,7 +24,15 @@ export async function sendFusData() {
   eventsQueue.splice(0, eventsQueue.length)
 
   try {
-    await sendData(baseUri, config.endpoint, payload)
+    if (useBeacon && navigator.sendBeacon) {
+      const isSuccessSend = sendDataBeacon(baseUri, config.endpoint, payload)
+
+      if (!isSuccessSend) {
+        throw Error('Failed to send data with Beacon API')
+      }
+    } else {
+      await sendData(baseUri, config.endpoint, payload)
+    }
   } catch (error) {
     window.BS?.Log?.error(error)
     eventsQueue.push(...payload.events)
