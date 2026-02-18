@@ -13,12 +13,16 @@ const loadStatisticsChunk = memoize(
 )
 
 export const initializeStatistics = (extension: UrlExtension<{interval: number}>) => {
-  loadStatisticsChunk().then(({initializeStatisticsPlugin, scheduleEventsSending}) => {
-    const config = initializeStatisticsPlugin(extension)
-    if (config.initialized) {
-      scheduleEventsSending()
-    }
-  })
+  loadStatisticsChunk().then(
+    ({initializeStatisticsPlugin, scheduleEventsSending, initializeUnloadListeners}) => {
+      const config = initializeStatisticsPlugin(extension)
+
+      if (config.initialized) {
+        initializeUnloadListeners()
+        scheduleEventsSending()
+      }
+    },
+  )
 }
 
 export const trackEvent = (fusAction: FusEvent) => {

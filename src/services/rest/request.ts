@@ -43,6 +43,7 @@ const normalizeHeaders = (headers: HeadersInit | null | undefined): Record<strin
 export type RestRequestOptions = RequestInit & {
   essential?: boolean | null | undefined
   skipInTests?: boolean | null | undefined
+  keepalive?: boolean | null | undefined
 }
 export function getHeaders(
   options?: RestRequestOptions | null | undefined,
