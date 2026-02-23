@@ -61,6 +61,8 @@ export type PluginContext = {
     readonly agentPoolId?: string | null | undefined
     readonly agentTypeId?: string | null | undefined
     readonly testRunId?: string | null | undefined
+    readonly pipelineId?: string | null | undefined
+    readonly pipelineRunId?: string | null | undefined
   }
   contentPanel: ContentPanelContextValue
 }
