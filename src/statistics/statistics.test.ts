@@ -61,6 +61,14 @@ describe('statistics', () => {
   })
 
   describe('sendFusData with beacon', () => {
+    beforeEach(() => {
+      Object.defineProperty(navigator, 'sendBeacon', {
+        writable: true,
+        configurable: true,
+        value: jest.fn(),
+      })
+    })
+
     it('clears the queue when beacon send succeeds', async () => {
       jest.spyOn(config, 'getFusConfig').mockReturnValue(getMockPluginConfig())
       jest.spyOn(network, 'sendDataBeacon').mockReturnValue(true)
@@ -104,6 +112,25 @@ describe('statistics', () => {
       expect(network.sendDataBeacon).toHaveBeenCalledTimes(1)
       expect(network.sendData).not.toHaveBeenCalled()
     })
+
+    it('falls back to sendData when navigator.sendBeacon is not available', async () => {
+      Object.defineProperty(navigator, 'sendBeacon', {
+        writable: true,
+        configurable: true,
+        value: undefined,
+      })
+
+      jest.spyOn(config, 'getFusConfig').mockReturnValue(getMockPluginConfig())
+      jest.spyOn(network, 'sendDataBeacon').mockReturnValue(false)
+      jest.spyOn(network, 'sendData').mockImplementation(() => Promise.resolve(new Response()))
+
+      trackEvent(events[0])
+
+      await sendFusData(true)
+
+      expect(network.sendDataBeacon).not.toHaveBeenCalled()
+      expect(network.sendData).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('unload listeners', () => {
@@ -128,6 +155,12 @@ describe('statistics', () => {
     })
 
     it('sends data with beacon when visibilitychange fires with hidden state', async () => {
+      Object.defineProperty(navigator, 'sendBeacon', {
+        writable: true,
+        configurable: true,
+        value: jest.fn(),
+      })
+
       jest.spyOn(config, 'getFusConfig').mockReturnValue(getMockPluginConfig())
       jest.spyOn(network, 'sendDataBeacon').mockReturnValue(true)
 
