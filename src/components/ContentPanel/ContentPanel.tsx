@@ -42,7 +42,7 @@ export type ContentPanelProps = {
   readonly withBorder?: boolean
   readonly expandedByDefault?: boolean
   readonly errorHeading?: boolean
-  readonly headingProps?: HTMLAttributes<HTMLHeadingElement>
+  readonly headingProps?: Omit<HTMLAttributes<HTMLHeadingElement>, 'children' | 'dangerouslySetInnerHTML'>
 }
 
 function ContentPanel({
