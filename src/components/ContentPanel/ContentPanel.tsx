@@ -16,7 +16,7 @@ export function HTMLHeading({
   children,
   className,
   ...restProps
-}: Omit<HTMLAttributes<HTMLHeadingElement>, 'dangerouslySetInnerHTML'>) {
+}: HTMLAttributes<HTMLHeadingElement>) {
   return (
     <H2 className={classNames(styles.htmlHeading, className)} {...restProps}>
       {children}
