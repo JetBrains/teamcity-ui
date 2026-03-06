@@ -42,6 +42,10 @@ export type ContentPanelProps = {
   readonly withBorder?: boolean
   readonly expandedByDefault?: boolean
   readonly errorHeading?: boolean
+  readonly headingProps?: Omit<
+    HTMLAttributes<HTMLHeadingElement>,
+    'children' | 'dangerouslySetInnerHTML'
+  >
 }
 
 function ContentPanel({
@@ -58,6 +62,7 @@ function ContentPanel({
   withBorder = true,
   expandedByDefault = true,
   errorHeading,
+  headingProps,
   ...restProps
 }: ContentPanelProps) {
   const {expanded, setExpanded, setParams} = useContext(ContentPanelContext)
@@ -66,7 +71,7 @@ function ContentPanel({
   }, [expandedByDefault, panelType, setParams])
   const HeadingHtml = React.useMemo(
     () => (
-      <HTMLHeading>
+      <HTMLHeading {...headingProps}>
         {expandable === true && (
           <SvgIcon
             className={styles.chevronIcon}
@@ -103,6 +108,7 @@ function ContentPanel({
       subheading,
       subheadingClassName,
       setExpanded,
+      headingProps,
     ],
   )
   return (
