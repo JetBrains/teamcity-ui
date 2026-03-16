@@ -1,4 +1,4 @@
-import {request} from '../../services/rest/request'
+import {getHeaders, request} from '../../services/rest/request'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function sendData(serverUrl: string, endpoint: string, data: any) {
@@ -14,7 +14,9 @@ export function sendData(serverUrl: string, endpoint: string, data: any) {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function sendDataBeacon(serverUrl: string, endpoint: string, data: any): boolean {
-  const url = `${serverUrl}/${endpoint}`
+  const {'X-TC-CSRF-Token': csrfToken} = getHeaders()
+  const query = csrfToken != null ? `?${new URLSearchParams({'tc-csrf-token': csrfToken})}` : ''
+  const url = `${serverUrl}/${endpoint}${query}`
   const blob = new Blob([JSON.stringify(data)], {type: 'application/json'})
 
   return navigator.sendBeacon(url, blob)
