@@ -119,7 +119,7 @@ function ContentPanel({
       })}
       {...restProps}
     >
-      <div className={styles.header}>
+      <div className={styles.header} data-test="content-panel-header">
         {HeadingHtml}
         {expanded && headerSnippet}
       </div>
