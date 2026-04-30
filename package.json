@@ -112,7 +112,7 @@
     "vite": "^8.0.0",
     "vite-css-modules": "^1.8.4",
     "vite-plugin-commonjs": "^0.10.4",
-    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-dts": "^5.0.0",
     "vite-plugin-dynamic-import": "^1.6.0"
   },
   "peerDependencies": {
