@@ -4,4 +4,5 @@ yarn-error.log
 npmlogs
 *storybook.log
 dist
+storybook-static
 *.css.d.ts
