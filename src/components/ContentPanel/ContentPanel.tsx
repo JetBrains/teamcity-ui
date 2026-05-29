@@ -1,6 +1,6 @@
 import '@jetbrains/ring-ui-built/components/style.css'
-import ChevronDownIcon from '@jetbrains/icons/chevron-down'
-import ChevronRightIcon from '@jetbrains/icons/chevron-right'
+import ChevronDownIcon from '@jetbrains/icons/chevron-down.js'
+import ChevronRightIcon from '@jetbrains/icons/chevron-right.js'
 import {H2} from '@jetbrains/ring-ui-built/components/heading/heading.js'
 import LoaderInline from '@jetbrains/ring-ui-built/components/loader-inline/loader-inline.js'
 import classNames from 'classnames'
