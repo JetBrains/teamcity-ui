@@ -71,6 +71,18 @@ export default tseslint.config(
         },
       ],
       'import/no-cycle': error,
+      'no-restricted-imports': [
+        error,
+        {
+          patterns: [
+            {
+              group: ['@jetbrains/icons/*', '!@jetbrains/icons/*.js'],
+              message:
+                "Import @jetbrains/icons/* with the explicit `.js` extension (e.g. `import StarFilledIcon from '@jetbrains/icons/star-filled.js'`).",
+            },
+          ],
+        },
+      ],
       'import/no-extraneous-dependencies': [
         error,
         {
