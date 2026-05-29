@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.20](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.19...v1.0.0-alpha.20) (2026-05-29)
+
+
+### Features
+
+* **SvgIcon:** deprecate passing icon name as string [publish] ([#260](https://github.com/JetBrains/teamcity-ui/issues/260)) ([48c3c52](https://github.com/JetBrains/teamcity-ui/commit/48c3c528043559f2b9f434b4773f5b6cd597ef98))
+
 ## [1.0.0-alpha.19](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.18...v1.0.0-alpha.19) (2026-03-20)
 
 ## [1.0.0-alpha.18](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.17...v1.0.0-alpha.18) (2026-03-06)
