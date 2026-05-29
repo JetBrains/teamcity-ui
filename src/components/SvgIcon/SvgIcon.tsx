@@ -7,8 +7,14 @@ import {pascalCase} from 'change-case'
 import classNames from 'classnames'
 import type {SVGAttributes} from 'react'
 import {Suspense, lazy, memo} from 'react'
+import deprecate from 'util-deprecate'
 
 import styles from './SvgIcon.module.css'
+
+const warnIconNameDeprecated = deprecate(
+  () => {},
+  "SvgIcon: passing icon name as a string is deprecated. Import the icon directly (e.g. `import PencilIcon from '@jetbrains/icons/pencil'`) and pass it as the `icon` prop instead. Passing raw SVG source strings is still supported.",
+)
 
 type Props = IconAttrs & {
   icon: IconType | string
@@ -35,10 +41,18 @@ export function injectGetLocalIcon(getIcon: GetIcon) {
 }
 
 export const getGlyph = memoize((icon: IconType | string): IconType | string => {
-  if (typeof icon !== 'string' || /^<svg/.test(icon)) {
+  if (typeof icon !== 'string') {
     return icon
   }
+  if (/^<svg/.test(icon)) {
+    const InlineSvg = memo((props: SVGAttributes<SVGSVGElement>) => (
+      <IconSVG {...props} src={icon} data-svg-icon data-ignore-dark-theme-adapter />
+    ))
+    InlineSvg.displayName = 'InlineSvg'
+    return InlineSvg
+  }
 
+  warnIconNameDeprecated()
   const size = getSize(icon)
   const LazySvg = lazy(() =>
     getLocalIcon != null ? getLocalIcon(icon).catch(() => getRingIcon(icon)) : getRingIcon(icon),

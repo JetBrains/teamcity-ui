@@ -6,3 +6,4 @@ npmlogs
 dist
 storybook-static
 *.css.d.ts
+.air
