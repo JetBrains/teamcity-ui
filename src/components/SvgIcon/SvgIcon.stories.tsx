@@ -1,4 +1,4 @@
-import StarFilledIcon from '@jetbrains/icons/star-filled'
+import StarFilledIcon from '@jetbrains/icons/star-filled.js'
 
 import type {Meta, StoryObj} from '@storybook/react-vite'
 

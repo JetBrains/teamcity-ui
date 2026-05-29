@@ -13,7 +13,7 @@ import styles from './SvgIcon.module.css'
 
 const warnIconNameDeprecated = deprecate(
   () => {},
-  "SvgIcon: passing icon name as a string is deprecated. Import the icon directly (e.g. `import PencilIcon from '@jetbrains/icons/pencil'`) and pass it as the `icon` prop instead. Passing raw SVG source strings is still supported.",
+  "SvgIcon: passing icon name as a string is deprecated. Import the icon directly (e.g. `import PencilIcon from '@jetbrains/icons/pencil.js'`) and pass it as the `icon` prop instead. Passing raw SVG source strings is still supported.",
 )
 
 type Props = IconAttrs & {
