@@ -1,4 +1,6 @@
 import '@jetbrains/ring-ui-built/components/style.css'
+import ChevronDownIcon from '@jetbrains/icons/chevron-down'
+import ChevronRightIcon from '@jetbrains/icons/chevron-right'
 import {H2} from '@jetbrains/ring-ui-built/components/heading/heading.js'
 import LoaderInline from '@jetbrains/ring-ui-built/components/loader-inline/loader-inline.js'
 import classNames from 'classnames'
@@ -76,7 +78,7 @@ function ContentPanel({
           <SvgIcon
             className={styles.chevronIcon}
             title={expanded ? 'Collapse section' : 'Expand section'}
-            icon={expanded ? 'chevron-down' : 'chevron-right'}
+            icon={expanded ? ChevronDownIcon : ChevronRightIcon}
             onClick={() => setExpanded(!expanded)}
           />
         )}
