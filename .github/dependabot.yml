@@ -14,7 +14,12 @@ updates:
         update-types:
           - "patch"
           - "minor"
+        exclude-patterns:
+          - "@storybook/*"
+          - "storybook"
+          - "eslint-plugin-storybook"
       storybook:
         patterns:
           - "@storybook/*"
           - "storybook"
+          - "eslint-plugin-storybook"
