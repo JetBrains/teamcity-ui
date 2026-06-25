@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.22](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.21...v1.0.0-alpha.22) (2026-06-25)
+
+
+### Features
+
+* **ContentPanel:** add opt-in CollapsibleGroup mode [publish] ([#281](https://github.com/JetBrains/teamcity-ui/issues/281)) ([6ff2bea](https://github.com/JetBrains/teamcity-ui/commit/6ff2bea1c7b7c762d73abdc7ccf366999502e800))
+
+
+### Bug Fixes
+
+* update dependabot.yml to properly group storybook packages ([#278](https://github.com/JetBrains/teamcity-ui/issues/278)) ([3e3d1ba](https://github.com/JetBrains/teamcity-ui/commit/3e3d1ba11b4927c2fbeda5b20325ea6d14c239ac))
+
 ## [1.0.0-alpha.21](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.20...v1.0.0-alpha.21) (2026-05-29)
 
 ## [1.0.0-alpha.20](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.19...v1.0.0-alpha.20) (2026-05-29)
