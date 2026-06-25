@@ -52,7 +52,7 @@
   ],
   "dependencies": {
     "@jetbrains/icons": "^5.8.0",
-    "@jetbrains/ring-ui-built": "^7.0.66",
+    "@jetbrains/ring-ui-built": "^7.0.116",
     "change-case": "^5.4.4",
     "classnames": "^2.5.1",
     "core-js": "^3.46.0",
@@ -76,7 +76,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^10.0.1",
     "@jetbrains/eslint-config": "^6.0.4",
-    "@jetbrains/ring-ui": "^7.0.38",
+    "@jetbrains/ring-ui": "^7.0.116",
     "@storybook/react-vite": "^10.0.6",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.1.1",
