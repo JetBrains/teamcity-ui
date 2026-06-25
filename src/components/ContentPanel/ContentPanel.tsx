@@ -108,7 +108,7 @@ function ContentPanel(props: ContentPanelProps) {
     if (unsupportedProps !== '') {
       // eslint-disable-next-line no-console
       console.warn(
-        `ContentPanel "${panelType}": ${unsupportedProps} not supported with the collapsibleGroup option and will be ignored.`,
+        `ContentPanel "${panelType}": the following props are not supported when collapsibleGroup is enabled and will be ignored: ${unsupportedProps}.`,
       )
     }
   }, [unsupportedProps, panelType])
