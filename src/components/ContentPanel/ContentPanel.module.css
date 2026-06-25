@@ -72,3 +72,7 @@
 .errorHeading {
   color: var(--ring-error-color);
 }
+
+.errorAvatar {
+  --ring-tag-background-color: var(--ring-removed-subtle-background-color);
+}
