@@ -25,11 +25,8 @@ type EventHandler = {
 class Plugin extends PluginCallbacks implements PluginInterface {
   static placeIds: PlaceIdList = PlaceId
   debug = false
-  name: string
-  placeId: PlaceId
-  // there's no better way to type a generic React component
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content: string | HTMLElement | React.ComponentType<any>
+  // name, placeId and content are inherited from PluginCallbacks with identical types;
+  // re-declaring them here without an initializer trips TS6's useDefineForClassFields (TS2612).
   options: PluginOptions
   container: HTMLElement | undefined = undefined
   reactRoot: Root | undefined = undefined
