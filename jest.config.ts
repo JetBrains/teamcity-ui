@@ -182,7 +182,8 @@ const config: Config = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ['jest-runner'],
+  // core-js is shipped pre-compiled; transforming it lets babel-plugin-polyfill-corejs3 inject core-js into itself (circular dep).
+  transformIgnorePatterns: ['jest-runner', 'node_modules/core-js'],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
