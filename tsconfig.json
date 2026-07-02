@@ -1,16 +1,22 @@
 {
+  // Base + type-check config: used by `tsc --noEmit`, `typecheck-ci`, ESLint and the IDE.
+  // Declaration emit lives in tsconfig.build.json (see the "postbuild" script) so that
+  // .storybook can be type-checked here without a rootDir that would reject it on emit.
   "compilerOptions": {
+    // ponytail: TS 6.0 defaults `strict` to true; this project was never strict. Keep it
+    // off so the migration doesn't change type-checking or the emitted .d.ts public API.
+    "strict": false,
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "isolatedModules": true,
     "types": ["vite/client", "jest"],
     "lib": ["DOM", "ESNext"],
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist",
     "module": "preserve",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "noEmit": true
   },
-  "include": ["src", ".storybook"]
+  // ".storybook/**/*", not bare ".storybook": TS's include glob skips dot-directories,
+  // so a bare entry matches nothing and the configs go unchecked.
+  "include": ["src", ".storybook/**/*"]
 }
