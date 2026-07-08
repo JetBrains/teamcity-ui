@@ -2,12 +2,12 @@ import {request} from './request'
 
 describe('request', () => {
   const originalFetch = window.fetch
-  const originalBaseUri = window.base_uri
+  const originalBaseUri = window['base_uri']
   const originalBS = window.BS
 
   afterEach(() => {
     window.fetch = originalFetch
-    window.base_uri = originalBaseUri
+    window['base_uri'] = originalBaseUri
     window.BS = originalBS
   })
 
@@ -15,7 +15,7 @@ describe('request', () => {
     const requests: Array<{body: string; csrfToken: string | null}> = []
     let csrfToken = 'old-token'
 
-    window.base_uri = 'http://localhost'
+    window['base_uri'] = 'http://localhost'
     window.BS = {
       CSRF: {
         getCachedToken: jest.fn(() => csrfToken),
@@ -44,7 +44,7 @@ describe('request', () => {
     })
 
     const response = await request(
-      window.base_uri,
+      window['base_uri'],
       null,
       new Request('http://localhost/app/rest/test', {
         method: 'POST',

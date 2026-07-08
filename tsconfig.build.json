@@ -1,0 +1,15 @@
+{
+  // Declaration-emit config: used by `npm run build` (the "postbuild" step).
+  // Emits only src so .d.ts land at dist/<x>.d.ts beside vite's dist/<x>.mjs
+  // (matching package "exports"/"types"); .storybook is excluded so rootDir holds.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    // TS 6.0 no longer infers rootDir; set it explicitly.
+    "rootDir": "src"
+  },
+  "include": ["src"]
+}

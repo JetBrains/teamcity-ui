@@ -171,12 +171,12 @@ export async function request(
 
   async function doRequest() {
     checkRequestPossibility()
-    const request = requestTemplate.clone()
-    const headers = getFreshRequestHeaders(request.headers, options, withAuth)
+    const requestAttempt = requestTemplate.clone()
+    const headers = getFreshRequestHeaders(requestAttempt.headers, options, withAuth)
 
     return {
       csrfToken: headers.get('X-TC-CSRF-Token'),
-      response: await fetch(new Request(request, {headers})),
+      response: await fetch(new Request(requestAttempt, {headers})),
     }
   }
 
