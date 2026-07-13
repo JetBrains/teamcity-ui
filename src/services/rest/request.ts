@@ -27,7 +27,7 @@ function getHeadersEntries(headers: HeadersInit | null | undefined): readonly st
   }
 
   if (headers instanceof Headers) {
-    const result = []
+    const result: string[][] = []
     headers.forEach((value, key) => {
       result.push([key, value])
     })
@@ -45,6 +45,41 @@ export type RestRequestOptions = RequestInit & {
   skipInTests?: boolean | null | undefined
   keepalive?: boolean | null | undefined
 }
+type RestRequestInput = Request | RestRequestOptions
+
+const setHeaders = (headers: Headers, nextHeaders: Record<string, string>) => {
+  Object.entries(nextHeaders).forEach(([key, value]) => headers.set(key, value))
+}
+
+function getRequestUrl(serverUrl?: string | null, endpoint?: string | null): string {
+  return [serverUrl, endpoint].filter(Boolean).join('/')
+}
+
+function createRequestTemplate(
+  serverUrl?: string | null,
+  endpoint?: string | null,
+  options?: RestRequestInput | null,
+): Request {
+  return options instanceof Request
+    ? options.clone()
+    : new Request(getRequestUrl(serverUrl, endpoint), {
+        credentials: 'include',
+        ...options,
+      })
+}
+
+function getFreshRequestHeaders(
+  requestHeaders: Headers,
+  options?: RestRequestInput | null,
+  withAuth?: boolean,
+): Headers {
+  const headers = new Headers(requestHeaders)
+  const requestOptions = options instanceof Request ? {headers} : {...options, headers}
+  setHeaders(headers, getHeaders(requestOptions, withAuth))
+
+  return headers
+}
+
 export function getHeaders(
   options?: RestRequestOptions | null | undefined,
   withAuth = true,
@@ -124,34 +159,31 @@ function checkCSRFExists() {
 export async function request(
   serverUrl?: string | null,
   endpoint?: string | null,
-  options?: RestRequestOptions | null,
+  options?: RestRequestInput | null,
   withAuth?: boolean,
 ): Promise<Response> {
   checkRequestPossibility()
-  const method = options?.method
+  const requestTemplate = createRequestTemplate(serverUrl, endpoint, options)
 
-  if (method != null && method.toUpperCase() !== 'GET') {
+  if (requestTemplate.method.toUpperCase() !== 'GET') {
     await checkCSRFExists()
   }
 
   async function doRequest() {
-    const headers = getHeaders(options, withAuth)
+    checkRequestPossibility()
+    const requestAttempt = requestTemplate.clone()
+    const headers = getFreshRequestHeaders(requestAttempt.headers, options, withAuth)
+
     return {
-      csrfToken: headers['X-TC-CSRF-Token'],
-      response: await (options instanceof Request
-        ? fetch(options)
-        : fetch([serverUrl, endpoint].filter(Boolean).join('/'), {
-            credentials: 'include',
-            ...options,
-            headers,
-          })),
+      csrfToken: headers.get('X-TC-CSRF-Token'),
+      response: await fetch(new Request(requestAttempt, {headers})),
     }
   }
 
   const {response, csrfToken} = await doRequest()
   return new Promise(async resolve => {
     const shouldRetry = await processErrorCodes({
-      url: serverUrl,
+      url: requestTemplate.url,
       statusCode: response.status,
       getMessage: () => response.clone().text(),
       retryCallback: async () => resolve((await doRequest()).response),
