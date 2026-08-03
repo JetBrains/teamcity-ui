@@ -55,16 +55,21 @@ export type ContentPanelProps = {
   /**
    * Render the panel using Ring UI's `CollapsibleGroup` (off by default).
    *
-   * Two behaviours differ from the default mode, by design:
-   * - The header is a disclosure button, not an `<h2>` heading — Ring renders the title inside
-   *   the toggle button, where a heading element would be invalid markup. `headingProps` is
-   *   therefore ignored in this mode.
-   * - `content` is unmounted while collapsed (the default mode keeps it mounted and toggles
-   *   `display: none`), so any local state, subscriptions, or cached data inside `content`
-   *   reset on every collapse/expand. Lift such state above `ContentPanel` if it must survive.
+   * The header is a disclosure button wrapped in an `<h2>`, so the title itself is not a heading
+   * element — Ring renders it inside the toggle button, where that would be invalid markup.
+   * `headingProps` is therefore ignored in this mode.
+   *
+   * `content` stays mounted while collapsed (Ring's `keepMounted`), matching the default mode.
+   * Two limitations of hiding rather than unmounting:
+   * - Content rendered through a portal (e.g. `Popup`) is not hidden — close such overlays when
+   *   the panel collapses.
+   * - Hidden form controls still take part in form validation and submission — disable them
+   *   while collapsed if that matters.
    */
   readonly collapsibleGroup?: boolean
   readonly icon?: IconType | string
+  /** Joined with `panelType` on the root element, per Ring's `data-test` convention. */
+  readonly 'data-test'?: string
 }
 
 const PROPS_UNSUPPORTED_WITH_COLLAPSIBLE_GROUP = [
@@ -157,12 +162,16 @@ function ContentPanel(props: ContentPanelProps) {
 
   if (collapsibleGroup) {
     const error = errorHeading === true
+    const {'data-test': callerDataTest, ...rest} = restProps
     // Title is inline text, not <HTMLHeading>: CollapsibleGroup renders it inside the toggle
     // <button>, where a heading element is invalid markup. See the prop's JSDoc for details.
     return (
       <CollapsibleGroup
+        {...rest}
         className={className}
-        data-test={panelType}
+        data-test={[panelType, callerDataTest].filter(Boolean).join(' ')}
+        headingLevel={2}
+        keepMounted
         avatar={
           <Avatar
             round

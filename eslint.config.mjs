@@ -90,6 +90,10 @@ export default tseslint.config(
             'eslint.config.mjs',
             'vite.config.mjs',
             '**/*.stories.tsx',
+            '**/*.test.ts',
+            '**/*.test.tsx',
+            'jest.config.ts',
+            'jest.setup.ts',
             '.storybook/**',
             'tsc-teamcity.js',
           ],
@@ -121,7 +125,7 @@ export default tseslint.config(
     rules: {'import/extensions': ignore},
   },
   {
-    files: ['**/*.test.ts'],
+    files: ['**/*.test.ts', '**/*.test.tsx'],
     languageOptions: {
       globals: globals.jest,
     },
