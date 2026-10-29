@@ -49,7 +49,12 @@ export default class IconButton extends React.PureComponent<Props> {
         height={ControlsHeight.S}
         {...restProps}
         inline={!withBorder}
-        title={title ?? (typeof children === 'string' ? children : null) ?? getDisplayName(icon)}
+        title={
+          title ??
+          (typeof children === 'string' ? children : null) ??
+          // A raw SVG string is markup, not a meaningful display name.
+          (typeof icon === 'string' && icon.startsWith('<svg') ? null : getDisplayName(icon))
+        }
         area-labelledby={this.props.ariaLabelledby}
         {...iconProps}
       >
