@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.27](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.26...v1.0.0-alpha.27) (2026-11-27)
+
+
+### Bug Fixes
+
+* **IconButton:** omit title for raw SVG icons ([#387](https://github.com/JetBrains/teamcity-ui/issues/387)) ([4f2563d](https://github.com/JetBrains/teamcity-ui/commit/4f2563d54210d18699a18e0df923186846495d86))
+
 ## [1.0.0-alpha.26](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.25...v1.0.0-alpha.26) (2026-08-14)
 
 ## [1.0.0-alpha.25](https://github.com/JetBrains/teamcity-ui/compare/v1.0.0-alpha.24...v1.0.0-alpha.25) (2026-08-03)
